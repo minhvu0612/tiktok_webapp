@@ -1,0 +1,84 @@
+
+@import './../../assets/scss/variables.scss';
+
+.user{
+    overflow-y: scroll;
+    width: 100%;
+    height: 100vh;
+    //padding-right: 100px;
+    //padding-left: 100px;
+    box-sizing: border-box;
+    .user--main{
+        margin-top: 50px;
+
+        div{
+            
+            .btn--video{
+                width: 50%;
+                border-radius: 0%;
+                color: rgb(165, 162, 162);
+                font-weight: bold;
+                transition: 0.2s;
+            }
+
+            .btn{
+                color: black;
+            }
+
+            hr{
+                border: none;
+                border-bottom: 2px solid black;
+                width: 50%;
+                transition: 0.2s;
+            }
+            
+            .btn1{
+                transform: translateX(0%);
+            }
+
+            .btn2{
+                transform: translateX(100%);
+            }
+        }
+
+        .my--video{
+            padding-top: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            .video--link{
+                width: 33%;
+                margin-right: 1px;
+            }
+        }
+
+        .liked--video{
+            margin-top: 10px;
+            text-align: center;
+
+            div{
+                .lock--icon{
+                    margin-top: 30px;
+                    font-size: 70px;
+                    color: darkgray;
+                }
+    
+                .lock--text{
+                    font-size: 2em;
+                    font-weight: bold;
+                    margin-top: 40px;
+                }
+    
+                p{
+                    font-size: 17px;
+                    font-weight: normal;
+                    margin-top: 10px;
+                }
+            }
+        }
+
+        .hidden{
+            display: none;
+        }
+    }
+}

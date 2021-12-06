@@ -1,0 +1,30 @@
+// .video-user__name :hover {
+//   text-decoration: none;
+//   color: black !important;
+// }
+@import './../../../assets/scss/variables.scss';
+
+.video {
+  overflow-y: scroll;
+  .video__play {
+    margin-top: 8px;
+    width: 336px;
+    height: 600px;
+    border-radius: 5px;
+  }
+  .log-in_btn:hover {
+    border-color: $button-color !important;
+  }
+  .btn-group {
+    height: 220px;
+    align-self: flex-end;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-left: 15px;
+  }
+  .btn-group__interactive {
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0.06);
+  }
+}

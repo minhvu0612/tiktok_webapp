@@ -1,0 +1,71 @@
+@import './../../assets/scss/variables.scss';
+
+$user--img: 120px;
+$btn--width: 250px;
+$btn--color: rgb(194, 6, 6);
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.infor--user{
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    img{
+        width: $user--img;
+        height: $user--img;
+        border-radius: 100%;
+        margin-right: 25px;
+    }
+
+    div{
+        margin-top: 5px;
+       :not(:first-child){
+           margin-top: 10px;
+       }
+       h3{
+           font-weight: normal;
+       }
+       .btn--follow{
+           width: $btn--width;
+           background-color: $button-color;
+       }
+       .btn--follow:hover{
+           opacity: 0.9;
+       }
+    }
+
+    .user--report--icon{
+        padding-top: 10px;
+        padding-left: 450px;
+    }
+}
+
+.infor--account{
+    display: flex;
+    :not(:first-child){
+        margin-left: 40px;
+    }
+}
+
+
+.infor--descript{
+    margin-top: 20px;
+    font-family: Courier, "Helvetica Neue", Helvetica, sans-serif, Arial;
+}
+
+.infor--facebook{
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+
+.infor--facebook:hover{
+    color: black;
+}
+
+.infor--facebook:active{
+    color: black;
+}

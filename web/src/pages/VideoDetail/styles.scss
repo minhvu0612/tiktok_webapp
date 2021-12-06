@@ -1,0 +1,66 @@
+@import './../../assets/scss/variables.scss';
+//15.6 inch width:1417px height:945px
+.video-detail {
+  font-size: 16px;
+  .left_column {
+    width: 70%;
+  }
+  .right_column {
+    width: 30%;
+  }
+  .video__play {
+    width: 50%;
+    font-family: 'ProximaNova,Arial,Tahoma,PingFangSC,sans-serif' !important;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+  }
+  .log-in_btn:hover {
+    border-color: $button-color !important;
+  }
+  .css-hhvo2v-MuiListItem-root {
+    padding: 0 !important;
+  }
+  .btn:hover {
+    background-color: inherit !important;
+  }
+  .btn:focus-visible {
+    background-color: inherit !important;
+  }
+  .header__btn--login {
+    padding: 8px;
+    margin: 0px 16px 20px 16px;
+    font-weight: bold;
+    background-color: $button-color;
+  }
+  .header__btn--login:hover {
+    opacity: 0.9;
+    background-color: $button-color;
+  }
+  .register {
+    color: $button-color;
+    text-transform: inherit;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .btn-cancle:hover {
+    opacity: 0.7;
+  }
+  .input_message {
+    width: 30%;
+  }
+}
+@media screen and (min-width: 1000px) and (max-width: 1700px) {
+  .video-detail {
+    .left_column {
+      width: 60%;
+    }
+    .right_column {
+      width: 40%;
+    }
+    .input_message {
+      width: 40%;
+    }
+  }
+}

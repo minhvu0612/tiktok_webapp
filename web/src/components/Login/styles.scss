@@ -1,0 +1,36 @@
+@import './../../assets/scss/variables.scss';
+
+.modal {
+  font-family: 'ProximaNova-semibold' !important;
+  .scroll-dialog-title {
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .icon-btn {
+    font-weight: bold;
+    color: black;
+    border-left: 1px solid rgba(22, 24, 35, 0.12);
+    border-top: 1px solid rgba(22, 24, 35, 0.12);
+    border-bottom: 1px solid rgba(22, 24, 35, 0.12);
+    font-size: 26px;
+    padding: 9px;
+  }
+  .icon-btn:hover {
+    background: inherit;
+  }
+  .login__btn {
+    color: black;
+  }
+  .login__btn :hover {
+    background-color: inherit;
+  }
+  .register {
+    color: $button-color;
+    text-transform: inherit;
+    font-size: 15px;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,11 @@
+@import './../../assets/scss/variables.scss';
+
+
+.video__page{
+    height: 100vh;
+    display: flex;
+    .video{
+        width: 60%;
+        height: 100%;
+    }
+}
