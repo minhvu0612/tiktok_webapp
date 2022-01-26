@@ -1,0 +1,288 @@
+:root{
+    --color-background: rgba(0, 0, 0, 0.05);
+    --color-hover: rgba(0, 0, 0, 0.08);
+    --color-tiktok: rgba(254, 44, 85, 1.0);
+    --color-tiktok-hover: rgb(228, 23, 64);
+    --color-form: rgba(0, 0, 0, 0.7);
+    --color-login-signup: rgba(0, 0, 0, 0.5);
+}
+
+.setting{
+    width: 100%;
+    height: 100vh;
+    background-color: whitesmoke;
+    position: relative;
+
+    .setting--container{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        padding: 70px 0px;
+        box-sizing: border-box;
+        .setting--main{
+            width: 70%;
+            height: 100%;
+            margin-left: 15%;
+            margin-right: 15%;
+            padding: 20px 50px;
+            background-color: white;
+            border-radius: 10px;
+
+            h1{
+                margin: 0;
+                font-size: 1.6em;
+            }
+            p{
+                margin: 0;
+                color: rgba(0, 0, 0, 0.4);
+                font-weight: bold;
+            }
+
+            .setting--main--child{
+                margin-top: 30px;
+                display: flex;
+
+                .setting--upload--file{
+                    cursor: pointer;
+                    position: relative;
+                    width: 35%;
+                    height: 350px;
+                    border: 2px dashed rgba(0, 0, 0, 0.4);
+                    border-radius: 5px;
+                    margin-right: 10%;
+                    margin-top: 30px;
+                    p{
+                        font-weight: normal;
+                        color: var(--color-login-signup);
+                        width: 50%;
+                        margin: 25%;
+                    }
+                    .setting--btn--upload{
+                        width: 200px;
+                        height: 50px;
+                        position: absolute;
+                        bottom: 20px;
+                        margin-left: 80px;
+                        border-radius: 5px;
+                        border: none;
+                        background-color: var(--color-tiktok);
+                        color: white;
+                        font-size: 1em;
+                        font-weight: bold;
+                    }
+                    .setting--btn--upload:hover{
+                        background-color: var(--color-tiktok-hover);
+                    }
+                }
+                .setting--upload--file:hover{
+                    background-color: whitesmoke;
+                    border: 2px dashed var(--color-tiktok);
+                }
+
+                .setting--upload--form{
+                    width: 55%;
+                    h1{
+                        font-size: 0.7em;
+                        color: red;
+                        margin-top: -10px;
+                        float: right;
+                    }
+                    label{
+                        font-weight: bold;
+                    }
+                    input{
+                        width: 600px;
+                        height: 35px;
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                        font-size: 1.2em;
+                        color: rgba(0, 0, 0, 0.5);
+                        background-color: var(--color-background);
+                        border-radius: 5px;
+                    }
+                    .age--gender{
+                        width: 608px;
+                        display: flex;
+                        align-items: center;
+                        input{
+                            width: 200px;
+                            margin-right: 100px;
+                            margin-left: 10px;
+                        }
+                        select{
+                            margin: 0;
+                            margin-left: 10px;
+                            width: 208px;
+                            height: 40px;
+                            font-size: 1.2em;
+                            color: rgba(0, 0, 0, 0.5);
+                            border-radius: 5px;
+                            border: 2px solid black;
+                            background-color: var(--color-background);
+                        }
+
+                    }
+
+                    input:focus, select:focus{
+                        outline: none;
+                        color: rgba(0, 0, 0, 1);
+                        background-color: white;
+                    }
+                    .setting--submit--clear{
+                        width: 450px;
+                        display: flex;
+                        justify-content: space-between;
+                        margin: 5% 15%;
+                        button{
+                            width: 150px;
+                            height: 40px;
+                            font-size: 1em;
+                            border-radius: 4px;
+                            border: none;
+                            font-weight: bold;
+                        }
+        
+                        button:first-child{
+                            background-color: white;
+                            border: 1px solid var(--color-form);
+                        }
+                        button:last-child{
+                            background-color: var(--color-tiktok);
+                            color: white;
+                        }
+                        button:first-child:hover{
+                            background-color: rgba(255, 227, 233, 0.623);
+                        }
+                        button:last-child:hover{
+                            background-color: var(--color-tiktok-hover);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.disable{
+    display: none;
+}
+
+
+.clear{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .clear--all{
+        width: 400px;
+        height: 200px;
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px 40px;
+        box-sizing: border-box;
+
+        .clear--title{
+            font-size: 1.6em;
+        }
+
+        .clear--btn{
+            display: flex;
+            justify-content: space-between;
+            button{
+                width: 130px;
+                height: 40px;
+                border-radius: 5px;
+                border: none;
+                font-weight: bold;
+            }
+
+            button:first-child{
+                background-color: var(--color-tiktok);
+                color: white;
+            }
+
+            button:last-child{
+                border: 1px solid var(--color-form);
+            }
+
+            button:first-child:hover{
+                background-color: var(--color-tiktok-hover);
+            }
+
+            button:last-child:hover{
+                background-color: rgba(255, 227, 233, 0.623);
+            }
+        }
+    }
+}
+
+
+.change--file{
+    display: flex;
+    position: absolute;
+    bottom: -50px;
+    width: 100%;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0% 5%;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 1px solid var(--color-form);
+    .file--name{
+        font-size: 0.9em;
+        margin: 0;
+        font-weight: normal;
+    }
+
+    .change{
+        font-size: 0.9em;
+        margin: 0;
+    }
+
+    .change:hover{
+        text-decoration: underline;
+    }
+}
+
+.img--upload{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.success{
+    position: absolute;
+    top: 70px;
+    width: 400px;
+    height: 40px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10px;
+    background-color: rgba(11, 190, 11, 0.7);
+    margin-left: 38%;
+    border-radius: 6px;
+}
+
+.fail{
+    position: absolute;
+    top: 70px;
+    width: 400px;
+    height: 40px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10px;
+    background-color: rgba(233, 7, 7, 0.7);
+    margin-left: 38%;
+    border-radius: 6px;
+}

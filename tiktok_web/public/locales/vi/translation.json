@@ -1,0 +1,90 @@
+{
+  "menu":{
+    "search": "Tìm kiếm ...",
+    "login": "Đăng Nhập",
+    "upload": "Tải lên",
+    "personal": "Trang cá nhân",
+    "setting": "Cài đặt",
+    "logout": "Đăng Xuất",
+    "login_form":{
+      "title": "Đăng Nhập Tiktok",
+      "email": "Tiếp tục với email",
+      "google": "Tiếp tục với google",
+      "change_signup": "Bạn chưa có tài khoản?",
+      "signup": "Đăng ký"
+    },
+    "signup_form":{
+      "title": "Đăng Ký Tiktok",
+      "email": "Tiếp tục với email",
+      "google": "Tiếp tục với google",
+      "change_login": "Bạn đã có tài khoản?",
+      "login": "Đăng nhập"
+    },
+    "form_setlogin":{
+      "submit": "Đăng Nhập",
+      "field1": "Tài khoản Email",
+      "field2": "Mật khẩu",
+      "alert1": "Thành công",
+      "alert2": "Thất bại"
+    },
+    "form_setsignup":{
+      "submit": "Đăng Ký",
+      "field1": "Tên người dùng",
+      "field2": "Họ và tên",
+      "field3": "Tài khoản Email",
+      "field4": "Tuổi",
+      "field5": "Giới tính",
+      "field6": "Mật khẩu",
+      "field7": "Xác nhận mật khẩu",
+      "alert1": "Thành công",
+      "alert2": "Thất bại",
+      "fullname_alert": "Tên đầy đủ phải nhiều hơn 1 từ",
+      "confirm_alert": "Xác nhận mật khẩu không trùng khớp"
+    }
+  },
+  "sidebar":{
+    "for_you": "Dành cho bạn",
+    "following": "Đang theo dõi",
+    "suggest_user": "Tài khoản được đề xuất",
+    "following_user": "Các tài khoản đang theo dõi",
+    "musics_recommend": "Các âm thanh được đề xuất",
+    "slogan": "Tiktok",
+    "author": {
+      "1": "Bởi Vu Ngoc Minh",
+      "2": "Bởi Vu Minh Cong",
+      "3": "Bởi Tran Huy Tu",
+      "4": "Bởi Nguyen Thanh Duong"
+    },
+    "login_title": "Đăng nhập để theo dõi người dùng, thích video và xem bình luận.",
+    "login_button": "Đăng nhập"
+  },
+  "upload":{
+    "submit": "Lưu thông tin",
+    "field1": "Tên người dùng",
+    "field2": "Họ và tên",
+    "field3": "Tài khoản Email",
+    "field4": "Tiểu sử",
+    "field5": "Liên kết Facebook",
+    "alert": "Hãy Đăng Nhập Để Sử Dụng Tính Năng Này"
+  },
+  "user":{
+    "follow": "Theo dõi",
+    "unfollow": "Bỏ theo dõi",
+    "following": "Đang theo dõi",
+    "follower": "Người theo dõi",
+    "likes": "Lượt thích",
+    "description": "Bạn chưa có tiểu sử.",
+    "myvideo": "Video",
+    "mylikes": {
+      "1": "Đã Thích",
+      "2": ""
+    },
+    "null_video_1" : "Bạn chưa có video nào",
+    "null_video_user": "chưa có video nào",
+    "null_video_2" : "Tải video đầu tiên của bạn lên",
+    "like_video_lock" : "Tiktok đã ẩn các video đã thích của ",
+    "like_video_1": "Video đã thích của người dùng này ở trạng thái riêng tư",
+    "alert_title": "Bạn chưa đăng nhập. Hãy đăng nhập để làm điều này",
+    "alert_btn": "Đã hiểu"
+  }
+}

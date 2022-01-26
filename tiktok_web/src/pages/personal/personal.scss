@@ -1,0 +1,236 @@
+:root{
+    --color-background: rgba(0, 0, 0, 0.05);
+    --color-hover: rgba(0, 0, 0, 0.08);
+    --color-tiktok: rgba(254, 44, 85, 1.0);
+    --color-tiktok-hover: rgb(228, 23, 64);
+    --color-form: rgba(0, 0, 0, 0.7);
+    --color-login-signup: rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar{
+    width: 7px;
+    transition: 0.2s;
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 7px;
+}
+
+.personal{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+
+    .personal--container{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        padding-top: 60px;
+        padding-left: 15%;
+        box-sizing: border-box;
+
+        display: flex;
+        justify-content: space-between;
+
+
+        .personal--main{
+            overflow-y: scroll;
+            padding-top: 30px;
+            padding-bottom: 40px;
+            width: 60%;
+            .personal--infor{
+
+                .personal--avatar--name{
+                    display: flex;
+                    img{
+                        width: 120px;
+                        height: 120px;
+                        border-radius: 100%;
+                    }
+                    .personal--name{
+                        margin-left: 40px;
+                        .personal--username{
+                            margin: 0;
+                        }
+                        .personal--fullname{
+                            margin: 0;
+                            font-size: 1.1em;
+                            color: var(--color-tiktok);
+                        }
+                        .follow--btn{
+                            background-color: var(--color-tiktok);
+                            transition: 0.3s;
+                        }
+                        .unfollow--btn{
+                            background-color: white;
+                            border: 1px solid var(--color-tiktok);
+                            transition: 0.2s;
+                        }
+                        .follow--btn:hover{
+                            background-color: var(--color-tiktok-hover);
+                        }
+                        .unfollow--btn:hover{
+                            background-color: rgba(255, 227, 233, 0.623);
+                        }
+                    }
+                }
+                .personal--description--facebook{
+                    width: 600px;
+                    a{
+                        text-decoration: none;
+                        color: var(--color-tiktok);
+                        font-weight: bold;
+                    }
+                }
+                .personal--counts{
+                    display: flex;
+                    width: 450px;
+                    justify-content: space-between;
+                    p{
+                        margin-bottom: 0px;
+                        span{
+                            font-weight: bold;
+                            font-size: 1.06em;
+                        }
+                    }
+                }
+            }
+            .personal--video{
+                margin-top: 20px;
+                position: relative;
+                button{
+                    width: 300px;
+                    height: 40px;
+                    border: none;
+                    background-color: white;
+                    font-weight: bold;
+                    font-size: 1.1em;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+                    color: rgba(0, 0, 0, 0.3);
+                }
+                .change_color{
+                    color: black;
+                }
+                hr{
+                    position: absolute;
+                    top: 30px;
+                    border: none;
+                    border-bottom: 2px solid black;
+                    width: 300px;
+                    transition: 0.2s;
+                }
+
+                .trans--1{
+                    transform: translateX(100%);
+                }
+
+                .trans--2{
+                    transform: translateX(0%);
+                }
+            }
+            .personal--myvideo{
+                display: flex;
+                flex-wrap: wrap;
+                margin-top: 3px;
+                //transition-delay: 1s;
+                .null--videos{
+                    padding: 80px 140px;
+                    box-sizing: border-box;
+                    h1{
+                        margin: 0;
+                        width: 100%;
+                        text-align: center;
+                    }
+                    p{
+                        margin: 0;
+                        text-align: center;
+                    }
+                    img{
+                        width: 100px;
+                        height: auto;
+                        margin-left: 110px;
+                    }
+                }
+            }
+
+            .personal--mylike{
+                display: flex;
+                flex-wrap: wrap;
+                margin-top: 3px;
+                //transition-delay: 1s;
+                .user--likes{
+                    padding: 70px 0px 50px;
+                    box-sizing: border-box;
+                    h1{
+                        margin: 0;
+                        width: 100%;
+                        text-align: center;
+                    }
+                    p{
+                        margin: 0;
+                        text-align: center;
+                    }
+                    img{
+                        width: 80px;
+                        height: auto;
+                        margin-left: 130px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// user
+.alert--notlogin{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    z-index: 1000;
+    background-color: var(--color-form);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .alert--content{
+        width: 550px;
+        height: 250px;
+        background-color: white;
+        text-align: center;
+        border-radius: 7px;
+        padding: 30px;
+        box-sizing: border-box;
+
+        button{
+            width: 100px;
+            height: 40px;
+            background-color: var(--color-tiktok);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1em;
+            font-weight: bold;
+            float: right;
+            margin-right: 30px;
+        }
+        button:hover{
+            background-color: var(--color-tiktok-hover);
+        }
+    }
+}
+
+// loading website
+
+.sweet-loading{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(whitesmoke, 1);
+    z-index: 1001;
+  }

@@ -1,0 +1,87 @@
+{
+  "menu":{
+    "search": "検索 ...",
+    "login": "ログイン",
+    "upload": "アップロード",
+    "personal": "個人",
+    "setting": "設定",
+    "logout": "ログアウト",
+    "login_form":{
+      "title": "Tiktokにログインする",
+      "email":"メールを続ける",
+      "google": "グーグルを続ける",
+      "change_signup": "まだアカウントがありません？",
+      "signup": "サインアップ"
+    },
+    "signup_form":{
+      "title": "Tiktokアカウントに登録",
+      "email": "メールでサインアップ",
+      "google": "グーグルでサインアップ",
+      "change_login": "すでにアカウントをお持ちですか？",
+      "login": "ログイン"
+    },
+    "form_setlogin":{
+      "submit": "ログイン",
+      "field1": "メール",
+      "field2": "パスワード",
+      "alert1": "成功した",
+      "alert2": "失敗しました"
+    },
+    "form_setsignup":{
+      "submit": "サインアップ",
+      "field1": "ユーザー名",
+      "field2": "名前",
+      "field3": "メール",
+      "field4": "おいくつ",
+      "field5": "性",
+      "field6": "パスワード",
+      "field7": "パスワードを認証する",
+      "alert1": "成功した",
+      "alert2": "失敗しました",
+      "fullname_alert": "フルネームには複数の単語が必要です",
+      "confirm_alert": "パスワードが一致していることを確認してください"
+    }
+  },
+  "sidebar":{
+    "for_you": "おすすめ",
+    "following": "フォーロイング",
+    "suggest_user": "おすすめユーザー",
+    "following_user": "フォローしているユーザー",
+    "musics_recommend": "推薦している音楽",
+    "slogan": "Tiktok",
+    "author": {
+      "1": "By Vu Ngoc Minh",
+      "2": "By Vu Minh Cong",
+      "3": "By Tran Huy Tu",
+      "4": "By Nguyen Thanh Duong"
+    },
+    "login_title": "ログインして、動画などのユーザーをフォローしたり、コメントを表示したりします。",
+    "login_button": "ログイン"
+  },
+  "upload":{
+    "submit": "アップロード",
+    "field1": "ユーザー名",
+    "field2": "名前",
+    "field3": "メール",
+    "field4": "説明",
+    "field5": "フェイスブック"
+  },
+  "user":{
+    "follow": "フォロー",
+    "unfollow": "フォロー解除",
+    "following": "フォーロイング",
+    "follower": "フォロワー",
+    "likes": "いいね",
+    "description": "自己紹介はまだ記入されていません。",
+    "myvideo": "動画",
+    "mylikes": {
+      "1": "いいね",
+      "2": ""
+    },
+    "null_video_1" : "まだビデオがありません",
+    "null_video_user": "はまだビデオがありません",
+    "null_video_2" : "最初のビデオをアップロードする",
+    "alert_title": "ログインしていません。 これを行うにはログインしてください",
+    "alert_btn": "わかった"
+  }
+}

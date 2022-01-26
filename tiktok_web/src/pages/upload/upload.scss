@@ -1,0 +1,283 @@
+:root{
+    --color-background: rgba(0, 0, 0, 0.05);
+    --color-hover: rgba(0, 0, 0, 0.08);
+    --color-tiktok: rgba(254, 44, 85, 1.0);
+    --color-tiktok-hover: rgb(228, 23, 64);
+    --color-form: rgba(0, 0, 0, 0.7);
+    --color-login-signup: rgba(0, 0, 0, 0.5);
+}
+
+.upload{
+    width: 100%;
+    height: 100vh;
+    background-color: whitesmoke;
+    position: relative;
+
+    .upload--containner{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        padding: 70px 0px;
+        box-sizing: border-box;
+
+        .upload--main{
+            width: 70%;
+            height: 100%;
+            margin-left: 15%;
+            margin-right: 15%;
+            padding: 20px 50px;
+            background-color: white;
+            border-radius: 10px;
+
+            h1{
+                margin: 0;
+                font-size: 1.6em;
+            }
+            p{
+                margin: 0;
+                color: rgba(0, 0, 0, 0.4);
+                font-weight: bold;
+            }
+            .upload--main--child{
+                display: flex;
+                .upload--upload--file{
+                    cursor: pointer;
+                    position: relative;
+                    width: 24.7%;
+                    height: 469px;
+                    border: 2px dashed rgba(0, 0, 0, 0.4);
+                    border-radius: 5px;
+                    margin-right: 10%;
+                    margin-top: 30px;
+                    p{
+                        font-size: 1.2em;
+                        font-weight: normal;
+                        color: var(--color-login-signup);
+                        width: 50%;
+                        margin: 50% 25%;
+                    }
+                    .upload--btn--upload{
+                        width: 200px;
+                        height: 50px;
+                        position: absolute;
+                        bottom: 20px;
+                        margin-left: 35px;
+                        border-radius: 5px;
+                        border: none;
+                        background-color: var(--color-tiktok);
+                        color: white;
+                        font-size: 1em;
+                        font-weight: bold;
+                    }
+                    .upload--btn--upload:hover{
+                        background-color: var(--color-tiktok-hover);
+                    }
+                }
+                .upload--upload--file:hover{
+                    background-color: whitesmoke;
+                    border: 2px dashed var(--color-tiktok);
+                }
+                .upload--upload--form{
+                    width: 55%;
+                    h1{
+                        font-size: 0.7em;
+                        color: red;
+                        margin-top: -10px;
+                        float: right;
+                    }
+                    label{
+                        font-weight: bold;
+                    }
+                    p{
+                        position: absolute;
+                        font-size: 1.4em;
+                        color: black;
+                        top: 180px;
+                        right: 0;
+                        margin-right: 18.7%;
+                        cursor: pointer;
+                    }
+                    p:hover{
+                        color: var(--color-tiktok);
+                    }
+                    input{
+                        width: 600px;
+                        height: 35px;
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                        font-size: 1.2em;
+                        color: rgba(0, 0, 0, 0.5);
+                        background-color: var(--color-background);
+                        border-radius: 5px;
+                    }
+                    textarea{
+                        width: 592.5px;
+                        height: 70px;
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                        font-size: 1.4em;
+                        color: black;
+                        border: 2px solid black;
+                        color: rgba(0, 0, 0, 0.5);
+                        background-color: var(--color-background);
+                        border-radius: 5px;
+                    }
+
+                    input:focus, textarea:focus{
+                        outline: none;
+                        color: rgba(0, 0, 0, 1);
+                        background-color: white;
+                    }
+
+                    .background--video{
+                        width: 600px;
+                        height: 250px;
+                        border: 2px solid black;
+                        border-radius: 5px;
+                        display: flex;
+                        align-items: center;
+
+                        img{
+                            width: 150px;
+                            height: 240px;
+                            padding: 5px;
+                        }
+                    }
+
+                    .upload--submit--clear{
+                        width: 450px;
+                        display: flex;
+                        justify-content: space-between;
+                        margin: 5% 15%;
+                        button{
+                            width: 150px;
+                            height: 40px;
+                            font-size: 1em;
+                            border-radius: 4px;
+                            border: none;
+                            font-weight: bold;
+                        }
+        
+                        button:first-child{
+                            background-color: white;
+                            border: 1px solid var(--color-form);
+                        }
+                        button:last-child{
+                            background-color: var(--color-tiktok);
+                            color: white;
+                        }
+                        button:first-child:hover{
+                            background-color: rgba(255, 227, 233, 0.623);
+                        }
+                        button:last-child:hover{
+                            background-color: var(--color-tiktok-hover);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.disable{
+    display: none;
+}
+
+
+.change--video{
+    display: flex;
+    position: absolute;
+    bottom: -50px;
+    width: 100%;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0% 5%;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 1px solid var(--color-form);
+    .video--name{
+        font-size: 0.9em;
+        margin: 0;
+        font-weight: normal;
+    }
+
+    .change{
+        font-size: 0.9em;
+        color: var(--color-tiktok);
+        margin: 0;
+    }
+
+    .change:hover{
+        text-decoration: underline;
+    }
+}
+
+.video--upload{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.success{
+    position: absolute;
+    top: 70px;
+    width: 400px;
+    height: 40px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10px;
+    background-color: rgba(11, 190, 11, 0.7);
+    margin-left: 38%;
+    border-radius: 6px;
+}
+
+.fail{
+    position: absolute;
+    top: 70px;
+    width: 400px;
+    height: 40px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10px;
+    background-color: rgba(233, 7, 7, 0.7);
+    margin-left: 38%;
+    border-radius: 6px;
+}
+
+
+#hashtag{
+    padding-right: 25px;
+    box-sizing: border-box;
+}
+
+
+.all--hashtag{
+    width: 300px;
+    font-size: 1.2em;
+    position: absolute;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
+    margin-top: -10px;
+    margin-left: -3px;
+    border-radius: 2px;
+    button{
+        width: 300px;
+        height: 30px;
+        background-color: white;
+        font-size: 1.2em;
+        border: none;
+        text-align: left;
+        transition: 0.2s;
+    }
+    button:hover{
+        background-color: var(--color-tiktok);
+        color: white;
+    }
+}

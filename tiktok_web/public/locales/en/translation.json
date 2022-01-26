@@ -1,0 +1,87 @@
+{
+  "menu":{
+    "search": "Search ...",
+    "login": "Login",
+    "upload": "Upload",
+    "personal": "Personal",
+    "setting": "Setting",
+    "logout": "Logout",
+    "login_form":{
+      "title": "Login To Tiktok",
+      "email": "Login by email",
+      "google": "Login by google",
+      "change_signup": "Not account?",
+      "signup": "Signup"
+    },
+    "signup_form":{
+      "title": "Register For A Tiktok Account",
+      "email": "Signup with email",
+      "google": "Signup with google",
+      "change_login": "Are you already account?",
+      "login": "Login"
+    },
+    "form_setlogin":{
+      "submit": "Login",
+      "field1": "Email",
+      "field2": "Password",
+      "alert1": "Thành công",
+      "alert2": "Thất bại"
+    },
+    "form_setsignup":{
+      "submit": "Signup",
+      "field1": "Username",
+      "field2": "Fullname",
+      "field3": "Email",
+      "field4": "Age",
+      "field5": "Gender",
+      "field6": "Password",
+      "field7": "Confirm password",
+      "alert1": "Successuflly",
+      "alert2": "Failed",
+      "fullname_alert": "Tên đầy đủ phải nhiều hơn 1 từ",
+      "confirm_alert": "Tên đầy đủ phải nhiều hơn 1 từ"
+    }
+  },
+  "sidebar":{
+    "for_you": "For you",
+    "following": "Following",
+    "suggest_user": "Recommended users",
+    "following_user": "Following users",
+    "musics_recommend": "Recommended musics",
+    "slogan": "Tiktok",
+    "author": {
+      "1": "By Vu Ngoc Minh",
+      "2": "By Vu Minh Cong",
+      "3": "By Tran Huy Tu",
+      "4": "By Nguyen Thanh Duong"
+    },
+    "login_title": "Login to follow users, like videos, and view comments.",
+    "login_button": "Login"
+  },
+  "upload":{
+    "submit": "Upload",
+    "field1": "Username",
+    "field2": "Fullname",
+    "field3": "Email",
+    "field4": "Description",
+    "field5": "Facebook"
+  },
+  "user":{
+    "follow": "Follow",
+    "unfollow": "Unfollow",
+    "following": "Following",
+    "follower": "Followers",
+    "likes": "Likes",
+    "description": "You don't have a profile yet.",
+    "myvideo": "Video",
+    "mylikes": {
+      "1": "Likes",
+      "2": ""
+    },
+    "null_video_1" : "You don't have a video yet",
+    "null_video_user": "don't have a video yet",
+    "null_video_2" : "Upload the first video",
+    "alert_title": "You are not logged in. Please login to do that",
+    "alert_btn": "Ok"
+  }
+}

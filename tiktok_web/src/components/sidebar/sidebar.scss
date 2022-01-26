@@ -1,0 +1,182 @@
+
+:root{
+    --color-background: rgba(0, 0, 0, 0.05);
+    --color-hover: rgba(0, 0, 0, 0.08);
+    --color-tiktok: rgba(254, 44, 85, 1.0);
+    --color-tiktok-hover: rgb(228, 23, 64);
+    --color-form: rgba(0, 0, 0, 0.7);
+    --color-login-signup: rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar{
+    width: 7px;
+    transition: 0.2s;
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+}
+
+.sidebar{
+    position: relative;
+    width: 356px;
+    height: 100%;
+    overflow-y: hidden;
+    .sidebar--div--change--pages{
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        padding: 20px 0px;
+        box-sizing: border-box;
+        .sidebar--for--you,  
+        .sidebar--following{
+           display: flex;
+           align-items: center;
+           width: 356px;
+           height: 50px;
+           padding-left: 15px;
+           border-radius: 3px;
+           text-decoration: none;
+           font-size: 1.2em;
+           color: black;
+           font-weight: bold;
+           box-sizing: border-box;
+           transition: 0.2s;
+        }
+        .sidebar--for--you:hover,  
+        .sidebar--following:hover{
+            background-color: var(--color-background);
+        }
+
+        .key{
+            color: var(--color-tiktok);
+        }
+    }
+    .sidebar--div--login{
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        padding: 20px 0px;
+        box-sizing: border-box;
+        p{
+            margin-top: 0;
+            color: rgba(0, 0, 0, 0.4);
+        }
+        button{
+            width: 99%;
+            height: 50px;
+            border-radius: 5px;
+            border: 1px solid var(--color-tiktok);
+            box-sizing: border-box;
+            background-color: white;
+            color: var(--color-tiktok);
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        button:hover{
+            background-color: rgba(255, 227, 233, 0.623);
+        }
+    }
+    .sidebar--div--suggest{
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        padding: 20px 0px;
+        .sidebar--suggest--users{
+            width: 100%;
+
+            .suggest--user--show{
+                display: flex;
+                width: 100%;
+                align-items: center;
+                padding: 5px 15px;
+                border-radius: 2px;
+                box-sizing: border-box;
+                color: black;
+                text-decoration: none;
+                transition: 0.3s;
+                .suggest--user--avatar{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 100%;
+                    border: 1px solid black;
+                }
+                .suggest--user--infor{
+                    margin-left: 20px;
+                    h1{
+                        margin: 0;
+                        font-size: 1em;
+                    }
+                    p{
+                        margin: 0;
+                        font-size: 0.8em;
+                        color: rgba(0, 0, 0, 0.5);
+                        font-weight: bold;
+                    }
+                }
+            }
+            .suggest--user--show:hover{
+                background-color: var(--color-background);
+            }
+        }
+    }
+    .sidebar--div--following{
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        padding: 20px 0px;
+        .sidebar--suggest--users{
+            width: 100%;
+
+            .suggest--user--show{
+                display: flex;
+                width: 100%;
+                align-items: center;
+                padding: 5px 15px;
+                border-radius: 2px;
+                box-sizing: border-box;
+                color: black;
+                text-decoration: none;
+                transition: 0.3s;
+                .suggest--user--avatar{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 100%;
+                    border: 1px solid black;
+                }
+                .suggest--user--infor{
+                    margin-left: 20px;
+                    h1{
+                        margin: 0;
+                        font-size: 1em;
+                    }
+                    p{
+                        margin: 0;
+                        font-size: 0.8em;
+                        color: rgba(0, 0, 0, 0.5);
+                        font-weight: bold;
+                    }
+                }
+            }
+            .suggest--user--show:hover{
+                background-color: var(--color-background);
+            }
+        }
+    }
+    .sidebar--div--hot--hashtags{
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        padding: 20px 0px;
+    }
+}
+
+.sidebar--div--title{
+    font-size: 0.9em;
+    color: rgba(0, 0, 0, 0.7);
+    margin: 0;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.sidebar:hover{
+    width: 363px;
+    overflow-y: scroll;
+}
+
+
+.disable{
+    display: none;
+}
+
+

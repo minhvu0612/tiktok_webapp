@@ -1,0 +1,99 @@
+:root{
+    --color-background: rgba(0, 0, 0, 0.05);
+    --color-hover: rgba(0, 0, 0, 0.08);
+    --color-tiktok: rgba(254, 44, 85, 1.0);
+    --color-tiktok-hover: rgb(228, 23, 64);
+    --color-form: rgba(0, 0, 0, 0.7);
+    --color-login-signup: rgba(0, 0, 0, 0.5);
+}
+
+
+.video--child{
+    width: 198px;
+    height: auto;
+    margin: 0;
+    margin-right: 2px;
+    margin-bottom: -2px;
+}
+
+
+.video--home{
+    width: 80%;
+    height: auto;
+    margin: 0;
+    margin-right: 2px;
+    margin-bottom: -2px;
+
+    .video--home--infor{
+        width: 50%;
+        display: flex;
+        align-items: center;
+        .video--home--user--avatar{
+            width: 60px;
+            height: 60px;
+            border-radius: 100%;
+        }
+
+        .video--home--user--infor{
+            margin-left: 20px;
+            margin-top: 20px;
+            p{
+                margin: 0;
+            }
+
+            .link--user--infor{
+                font-size: 1.3em;
+                text-decoration: none;
+                color: black;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .link--hashtag--infor{
+                font-size: 1.05em;
+                text-decoration: none;
+                color: black;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .link--user--infor:hover,
+            .link--hashtag--infor:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+    .video--src{
+        width: 45%;
+        margin-left: 12%;
+        border-radius: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    hr{
+        border: none;
+        border-bottom: 0.8px solid rgba(0, 0, 0, 0.13);
+    }
+}
+
+.video--home--div{
+    width: 100%;
+    display: flex;
+
+    button{
+        width: 120px;
+        height: 35px;
+        margin-left: -130px;
+        margin-top: 25px;
+        border: 1px solid var(--color-tiktok);
+        border-radius: 5px;
+        color: var(--color-tiktok);
+        font-weight: bold;
+        font-size: 0.85em;
+        background-color: white;
+    }
+    button:hover{
+        background-color: rgba(255, 227, 233, 0.623);
+    }
+}
