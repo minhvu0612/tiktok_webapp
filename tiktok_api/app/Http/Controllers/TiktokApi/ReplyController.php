@@ -22,19 +22,21 @@ class ReplyController extends Controller
         ]);
     }
 
-    public function load_replies($id){
+    public function load_replies(Request $request){
         $all_rep = Replies::all();
-        $array = [];
+        $array_count = [];
+        $array_check = [];
         $n = 0;
         for ($x = 0; $x < count($all_rep); $x++){
-            if ($all_rep[$x]->comment_id == $id){
-                $array[$n] = $all_rep[$x];
-                $n++;
-            }
+            $array_count[$n] = LikeCommentController::count_like_reply($all_rep[$x]->id);
+            $array_check[$n] = LikeCommentController::check_rep($request->user_id, $all_rep[$x]->id);
+            $n++;
         }
         return response()->json([
             'alert' => 200,
-            'data' => $array,
+            'data' => $all_rep,
+            'data_count' => $array_count,
+            'data_check' => $array_check,
         ]);
     }
 }

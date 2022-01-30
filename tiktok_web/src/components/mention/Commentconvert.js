@@ -1,3 +1,5 @@
+import './styles.scss';
+
 export const convertComment = (comment) => {
   if (comment !== '') {
     let regex = /@\[.+?\]\(.+?\)/gm

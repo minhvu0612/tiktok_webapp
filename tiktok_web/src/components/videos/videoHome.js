@@ -11,7 +11,7 @@ function VideoHome(props){
             <div className='video--home--infor'>
                 <img className='video--home--user--avatar' src={props.val.user.avatar} />
                 <div className='video--home--user--infor'>
-                    <p>
+                    <p style={{color: "rgba(254, 44, 85, 1.0)"}}>
                         <Link className='link--user--infor' to={'/users/' + props.val.user.id}>
                             {props.val.user.username}</Link> {props.val.user.fullname}</p>
                     <p>{props.val.description}</p>
@@ -20,7 +20,7 @@ function VideoHome(props){
                     </Link>
                 </div>
             </div>
-            <div>
+            <div onClick={() => window.location.href = "/videos/" + props.val.id}>
                 <video
                     className="video--src"
                     src={props.val.url}

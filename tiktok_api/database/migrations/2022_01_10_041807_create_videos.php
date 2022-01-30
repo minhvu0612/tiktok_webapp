@@ -16,6 +16,7 @@ class CreateVideos extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('url');
+            $table->string('background_video');
             $table->string('description')->nullable();
             $table->double('time_view');
             $table->string('hashtag_name');

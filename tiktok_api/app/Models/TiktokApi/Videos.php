@@ -11,6 +11,7 @@ class Videos extends Model
     protected $table="videos";
     protected $fillable = [
         'url',
+        'background_video',
         'description',
         'time_view',
         'user_id',

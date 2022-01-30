@@ -55,6 +55,20 @@ class LikeVideoController extends Controller
         ]);
     }
 
+    public function getLikeCount($id){
+        $all_likes = LikeVideos::all();
+        $n = 0;
+        for ($x = 0; $x < count($all_likes); $x++){
+            if ($all_likes[$x]->video->user_id == $id){
+                $n++;
+            }
+        }
+        return response()->json([
+            'alert' => 200,
+            'data' => $n,
+        ]);
+    }
+
     public function delete(Request $request){
         DB::delete('delete from like_videos where user_id = ? and video_id = ?',[$request->user_id, $request->video_id]);
         return response()->json([

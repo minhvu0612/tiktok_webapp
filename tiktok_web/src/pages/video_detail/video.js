@@ -3,24 +3,45 @@ import { onGetAllVideo, onGetVideoById } from "../../api/loadVideoByUserId";
 
 // lib
 import moment from 'moment';
+import ClipLoader from "react-spinners/ClipLoader";
 
 // icon
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 
 import './video.scss';
 import { checkLikeCmt, checkLikeVideo, countLikeCmt, countLikeVideo, deleteLikeCmt, dislikeVideo, likeCmt, likeVideo } from "../../api/like";
 import { onCheckFollow, onFollow, onFollowingUserList, onUnfollow } from "../../api/follows";
-import { loadComment, saveComment } from "../../api/comments";
+import { loadComment, loadReply, saveComment, saveReply } from "../../api/comments";
 import InputWithMention from "../../components/mention";
 import { convertComment } from "../../components/mention/Commentconvert";
+import Rep, { SetRep } from "./rep";
+
+function MapRep(props){
+    const [data, setData] = useState([props.data]);
+    return(
+    <>
+       {
+            data?(
+               <div>{
+                    data.map((val) => {
+                       <p>{val.id}</p>
+                    })
+               }</div>
+           ):null
+       }
+    </>
+    );
+}
 
 function VideoDetail(props){
 
-
+    const [loading_web, setLoadingWeb] = useState(false);
+    const [class_load, setClassLoad] = useState('disable');
     // set video - user - hashtag
     const [video, setVideo] = useState({});
     const [user, setUser] = useState({});
@@ -43,13 +64,7 @@ function VideoDetail(props){
     const [comments, setComments] = useState([]);
     const [count_like_cmt, setCountLikeCmt] = useState([]);
     const [check_like_cmt, setCheckLikeCmt] = useState([]);
-    const [count_like_rep, setCountLikeRep] = useState();
     const [load_comments, setLoadComments] = useState(true);
-
-
-    // set follow user
-    const [fl_user, setFLUser] = useState([]);
-    const [tag_user, setTagUser] = useState("disable");
 
 
     // inputstyles
@@ -69,7 +84,36 @@ function VideoDetail(props){
     const inputRef = useRef(null);
 
 
+
+    // set replies
+    const [all_rep, setAllRep] = useState([]);
+    const [count_like_rep, setCountLikeRep] = useState([]);
+    const [check_like_rep, setCheckLikeRep] = useState([]);
+
+    const [urep, setURep] = useState("");
+
+    const [reply, setReply] = useState("disable");
+
+    const [cmt_rep, setCmtRep] = useState({});
+
+    const [show_rep, setShowRep] = useState("disable");
+
+
+    // set state cmt , rep
+    const [type_cmt, setTypeCmt] = useState(1);
+
+
     //// ______________________________________ ///////////////
+
+    useEffect(async () => {
+        //setLoad(true);
+        setLoadingWeb(true);
+        setClassLoad('sweet-loading');
+        setTimeout(() => {
+            setLoadingWeb(false);
+            setClassLoad('disable');
+        }, 2000)
+    }, [window.location.pathname]);
 
     // set Video
     useEffect(async () => {
@@ -128,16 +172,37 @@ function VideoDetail(props){
         fetchCheckFollow();
     }, [user]);
 
-
     /*  Load all cmt of video  */
-    useEffect(() => {
+
+
+    const choose = (data, id) => {
+        const arr = []
+        data.forEach((val, key) => {
+            if (val.comment_id == id){
+                arr.push(val);
+            }
+        })
+        return arr.length;
+    }
+
+    useEffect(async () => {
         if (load_comments){
             async function fetchComment(){
                 const res = await loadComment({user_id: localStorage.getItem("id"), video_id: props.id});
-                //console.log(res.data);
-                res.data.data.forEach((val) => {
+                const res1 = await loadReply({user_id: localStorage.getItem("id")});
+                res1.data.data.forEach((val) => {
                     val.content = convertComment(val.content);
                 })
+                console.log(res1.data);
+                setAllRep(res1.data.data);
+                setCountLikeRep(res1.data.data_count);
+                setCheckLikeRep(res1.data.data_check);
+
+                res.data.data.forEach((val) => {
+                    val.content = convertComment(val.content);
+                    val.replies = choose(res1.data.data, val.id);
+                })
+                //console.log(res.data.data);
                 setComments(res.data.data);
                 setCountLikeCmt(res.data.data_count);
                 setCheckLikeCmt(res.data.data_check);
@@ -167,7 +232,6 @@ function VideoDetail(props){
         const data = {
             user_id: localStorage.getItem("id"),
             comment_id: id,
-            status: 0,
         }
         await deleteLikeCmt(data)
         .then(
@@ -241,14 +305,11 @@ function VideoDetail(props){
             user_id: localStorage.getItem("id"),
             video_id: props.id,
         }
-        //console.log(data);
         await saveComment(data)
         .then(
             (res) => {
-               //console.log(res);
                setLoadComments(true);
-               setComments("");
-               document.getElementById("comment").value = "";
+               setComment("");
             }
         )
     }
@@ -256,31 +317,42 @@ function VideoDetail(props){
 
     /*-------------------------- REPLY ---------------------------*/
     
-    // set write rep
-    useEffect(async () => {
-        await onFollowingUserList(localStorage.getItem("id"))
+
+    const handleReply = async (id) => {
+        const data = {
+            content: comment,
+            user_id: localStorage.getItem("id"),
+            comment_id: id,
+        }
+        //console.log(data);
+        await saveReply(data)
         .then(
             (res) => {
-                //console.log(res.data.following);
-                setFLUser(res.data.following);
+               //console.log(res);
+               setLoadComments(true);
+               setComment("");
+               setReply("disable");
+               setTypeCmt(1);
             }
         )
-    }, [isFollow]);
-
-    const writeTagUser = (value) => {
-        document.getElementById("comment").value += value;
-        setComment(document.getElementById("comment"));
     }
+
 
     return(
         <div className="videodetails">
-            <div className="videodetails--main">
-                <button className="videodetails--exit" onClick={() => {window.history.back()}}>E</button>
+            <div className={class_load}>
+                <ClipLoader size={100} color={"rgba(254, 44, 85, 1.0)"} loading={loading_web} speedMultiplier={1.0} />
+            </div>
+            <div className="videodetails--main" style={{backgroundImage: video.background_video}}>
+                <img src={video.background_video} alt="bg" />
+                <div className="bg--color"></div>
+                <button className="videodetails--exit" onClick={() => {window.history.back()}}><CloseIcon /></button>
                 <video className="videodetails--src"
                     src={video.url}
                     loop={true}
+                    autoPlay
                     controls
-                    muted>
+                    unmuted>
                 </video>
             </div>
             <div className="videodetails--sidebar">
@@ -323,7 +395,7 @@ function VideoDetail(props){
                         </div>
                         <div className="view">
                             <button><RemoveRedEyeIcon /></button>
-                            <h1>{count_view}</h1>
+                            <h1>20</h1>
                         </div>
                     </div>
                 </div>
@@ -332,19 +404,65 @@ function VideoDetail(props){
                         (comments != [])?(
                             <div className="video--comment">
                                 {comments.map((val, key) => (
-                                    <div style={{width: 100 + "%", display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+                                    <div style={{width: 100 + "%", display: "flex", 
+                                                 justifyContent: "space-between", alignItems: "center", position: 'relative'}}>
                                         <div>
-                                            <div className="line--comment">
-                                                <img src={val.user.avatar} alt="" />
-                                                <div>
-                                                    <h1>{val.user.username}</h1>
-                                                    <p dangerouslySetInnerHTML={{__html:val.content}}></p>
-                                                </div>
-                                            </div>
+                                            {
+                                                (val.user.id == user.id)?(
+                                                    <div className="line--comment">
+                                                        <img src={val.user.avatar} alt="" />
+                                                        <div>
+                                                            <h1 style={{color: "rgb(228, 23, 64)"}}>{val.user.username}</h1>
+                                                            <p dangerouslySetInnerHTML={{__html:val.content}}></p>
+                                                        </div>
+                                                    </div>
+                                                ):(
+                                                    <div className="line--comment">
+                                                        <img src={val.user.avatar} alt="" />
+                                                        <div>
+                                                            <h1>{val.user.username}</h1>
+                                                            <p dangerouslySetInnerHTML={{__html:val.content}}></p>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            }
                                             <div className="time--comment">
                                                 <p>{moment(val.created_at).format('MM-DD-YYYY')}</p>
-                                                <p className="show--replies" onClick={() => {}}>Trả lời</p>
+                                                <p className="show--replies" onClick={() => {
+                                                    setURep(val.user.username);
+                                                    setReply("replies");
+                                                    setCmtRep(val);
+                                                    setTypeCmt(0);
+                                                }}>Trả lời</p>
                                             </div>
+                                            {
+                                                (val.replies != 0)?(
+                                                    <>
+                                                    {
+                                                    (show_rep == "")?(
+                                                        <p style={{cursor: "pointer",
+                                                                           color: "rgba(0,0,0,0.5)",
+                                                                           fontSize: 0.85 + "em",
+                                                                           fontWeight: "bold",
+                                                                           marginLeft: 65 + "px",
+                                                                           marginTop: 0,
+                                                                   }} onClick={() => setShowRep("disable")}>Ẩn tất cả</p>
+                                                    ):(
+                                                        <p style={{cursor: "pointer",
+                                                                           color: "rgba(0,0,0,0.5)",
+                                                                           fontSize: 0.85 + "em",
+                                                                           fontWeight: "bold",
+                                                                           marginLeft: 65 + "px",
+                                                                           marginTop: 0,
+                                                                   }} onClick={() => setShowRep("")}>Hiển thị tất cả</p>
+                                                    )
+                                                    }
+                                                    <div className={show_rep}>
+                                                        {all_rep.map((v, key) => SetRep(v, val.id, check_like_rep[key], count_like_rep[key], user.id))}
+                                                    </div>
+                                                    </>
+                                                ):null
+                                            }
                                         </div>
                                         <div className="like--comment">
                                             {
@@ -355,28 +473,36 @@ function VideoDetail(props){
                                             <p>{count_like_cmt[key]}</p>
                                         </div>
                                     </div>
-                                ))}
+                                ))} 
                             </div>
                         ):null
                     }
                 </div>
-                <div className={tag_user}>
-                    {
-                        fl_user?fl_user.map((val, key) => <button onClick={() => writeTagUser("@" + val.user_2.username)}><img style={{width: 30 + "px", height: 30 + "px",
-                                                                               borderRadius: 100 + "%", marginRight: 8 + "px"}} 
-                                                                   src={val.user_2.avatar} alt="avt" />
-                                                                   {val.user_2.username}</button>):null
-                    }
+                <div className={reply}>
+                    <div className="replying">
+                        {
+                            (localStorage.getItem("username") == urep)? (
+                                <p>Đang trả lời chính mình</p>
+                            ):(
+                                <p>Đang trả lời <span>{urep}</span></p>
+                            )
+                        }
+                        <CloseIcon className="close--rep" onClick={() => {setReply("disable"); setTypeCmt(1)}} />
+                    </div>
+                    <p style={{color: "rgba(0, 0, 0, 0.5)", fontWeight: "normal", fontSize: 0.8 + "em"}} dangerouslySetInnerHTML={{__html:cmt_rep.content}}></p>
                 </div>
                 <div className="write--comment">
-                    <InputWithMention id="comment" 
-                                      innerref={inputRef}
+                    <InputWithMention innerref={inputRef}
                                       handleChange={(value) => setComment(value)} 
                                       content={comment}
                                       styles={inputStyles}  />
                     {
                         (comment != "")?(
-                            <p className="send" onClick={() => handleComment()}>Đăng</p>
+                            (type_cmt == 1)?(
+                                <p className="send" onClick={() => handleComment()}>Đăng</p>
+                            ):(
+                                <p className="send" onClick={() => handleReply(cmt_rep.id)}>Đăng</p>
+                            )
                         ):(
                             <p className="non--send">Đăng</p>
                         )

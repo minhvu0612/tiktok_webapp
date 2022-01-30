@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 import { onCheckFollow, onCountFollow, onFollow, onUnfollow } from "../../api/follows";
 import { onGetUser } from "../../api/getUser";
+import { getAllVideoLike } from "../../api/like";
 import { onGetVideoByUser } from "../../api/loadVideoByUserId";
 import Menu from "../../components/menu/menu";
 import Sidebar from "../../components/sidebar/sidebar";
@@ -14,7 +15,7 @@ function User(props){
 
     const [following, setFollowing] = useState(0);
     const [follower, setFollower] = useState(0);
-    const [like, setLike] = useState(12000000);
+    const [like, setLike] = useState(0);
 
     // set following
     const [isFollow, setIsFollow] = useState(401);
@@ -110,6 +111,11 @@ function User(props){
             setFollowing(res.data.following);
         }
         fetchCountFollow();
+        async function fetchLikeCount(){
+            const res = await getAllVideoLike(props.id);
+            setLike(res.data.data);
+        }
+        fetchLikeCount();
         setLoad(false);
     }, [loading]);
 

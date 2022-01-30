@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom';
 import './menu.scss';
 import Cookies from 'js-cookie';
 
-
+// import icon
+import SearchIcon from '@mui/icons-material/Search';
+import CloseIcon from '@mui/icons-material/Close';
 
 // import img
 import tiktok from './../../assets/image/tiktok.svg';
@@ -155,15 +157,12 @@ function Menu(props){
                             <Link className='menu--link--upload' style={{color: "rgba(254, 44, 85, 1.0)"}} to="/upload">{props.lang("menu.upload")}</Link>
                         ):<Link className='menu--link--upload' to="/upload">{props.lang("menu.upload")}</Link>
                     }
-                    <img className='menu--avatar' src={localStorage.getItem('avatar')} alt="avatar" onClick={() => {
-                        if (user_menu == 'disable'){
+                    <img className='menu--avatar' 
+                         src={localStorage.getItem('avatar')} alt="avatar" 
+                         onClick={() => {
                             setMenu('menu--user--menu');
-                        }
-                        else{
-                            setMenu('disable');
-                        }
-                    }} />
-                    <div className={user_menu}>
+                        }}/>
+                    <div className={user_menu} onMouseLeave={() => setTimeout(() => setMenu("disable"), 2000)}>
                         <div className='user--menu--content'>
                             <img src={localStorage.getItem('avatar')} alt="avatar" />
                             <div>
@@ -192,7 +191,9 @@ function Menu(props){
         <div className="menu--components">
             <img className='menu--logo' src={tiktok} alt="logo" />
             <input className='menu--search' type="search" placeholder={props.lang("menu.search")} />
-            <button className='menu--search--btn'>SE</button>
+            <button className='menu--search--btn'>
+                <SearchIcon style={{fontWeight: "normal", color: "rgba(0, 0, 0, 0.5)", marginTop: "3px"}} />
+            </button>
             <UserDiv />
         </div>
         <div className={alert}>
@@ -239,7 +240,7 @@ function Menu(props){
                         setLoginChoose('menu--login--choose');
                         setLoginForm('disable')
                     }}
-                >E</button>
+                ><CloseIcon /></button>
             </div>
             <div className={login_form} onSubmit={(e) => handleLogin(e)}>
                 <h1 className='menu--login--title'>{props.lang("menu.login_form.title")}</h1>
@@ -258,7 +259,7 @@ function Menu(props){
                         setLoginChoose('menu--login--choose');
                         setLoginForm('disable')
                     }}
-                >E</button>
+                ><CloseIcon /></button>
             </div>
         </div>
 
@@ -304,7 +305,7 @@ function Menu(props){
                         setSignupChoose('menu--signup--choose');
                         setSignupForm('disable')
                     }}
-                >E</button>
+                ><CloseIcon /></button>
             </div>
             <div className={signup_form} onSubmit={(e) => saveDataSignup(e)}>
                 <h1 className='menu--signup--title'>{props.lang("menu.signup_form.title")}</h1>
@@ -338,7 +339,7 @@ function Menu(props){
                         setSignupChoose('menu--signup--choose');
                         setSignupForm('disable')
                     }}
-                >E</button>
+                ><CloseIcon /></button>
             </div>
         </div>
         </>

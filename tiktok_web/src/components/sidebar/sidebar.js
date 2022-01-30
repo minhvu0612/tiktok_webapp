@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom';
 import { onLoadAll } from '../../api/loadAllUser';
 import Cookies from 'js-cookie';
 
+
+// import icon
+import HomeIcon from '@mui/icons-material/Home';
+import GroupRoundedIcon from '@mui/icons-material/GroupRounded';
+
+
 import './sidebar.scss';
 import { onFollowingUser } from '../../api/follows';
 
@@ -83,13 +89,21 @@ function Sidebar(props){
             <div className='sidebar--div--change--pages'>
                 {
                     (window.location.pathname == '/') ? (
-                        <Link className='sidebar--for--you key' to='/'>{props.lang("sidebar.for_you")}</Link>
-                    ):(<Link className='sidebar--for--you' to='/'>{props.lang("sidebar.for_you")}</Link>)
+                        <Link className='sidebar--for--you key' to='/'><HomeIcon style={{
+                            marginRight: 20 + "px",
+                        }} /> {props.lang("sidebar.for_you")}</Link>
+                    ):(<Link className='sidebar--for--you' to='/'><HomeIcon style={{
+                        marginRight: 20 + "px",
+                    }} /> {props.lang("sidebar.for_you")}</Link>)
                 }
                 {
                     (window.location.pathname == '/following') ? (
-                        <Link className='sidebar--following key' to='/following'>{props.lang("sidebar.following")}</Link>
-                    ):(<Link className='sidebar--following' to='/following'>{props.lang("sidebar.following")}</Link>)
+                        <Link className='sidebar--following key' to='/following'><GroupRoundedIcon style={{
+                            marginRight: 20 + "px",
+                        }} /> {props.lang("sidebar.following")}</Link>
+                    ):(<Link className='sidebar--following' to='/following'><GroupRoundedIcon style={{
+                        marginRight: 20 + "px",
+                    }} /> {props.lang("sidebar.following")}</Link>)
                 }
             </div>
             <LoginBtn />

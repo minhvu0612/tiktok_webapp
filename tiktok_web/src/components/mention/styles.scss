@@ -71,6 +71,17 @@
 //   justify-content: space-between;
 //   align-items: center;
 // }
+
+.div--input{
+  width: 35%;
+  //overflow-x: hidden;
+  //overflow-y: visible;
+}
+
+.mentions--singleLine {
+  width: 93% !important;
+}
+
 .mentions__input {
   border: none !important;
   border: 1px solid silver;
@@ -85,5 +96,21 @@
   // border-bottom: none !important;
 }
 .mentions_mention {
+  position: relative;
+  line-height: 42px;
+  color: red;
   font-weight: bold;
+  z-index: 100;
+}
+
+.mentions__highlighter > strong:first-of-type{
+  margin-left: 19px;
+}
+
+
+.user-tag__name{
+  color: rgba(254, 44, 85, 0.8);
+  font-size: 1em;
+  font-weight: bold;
+  text-decoration: none;
 }

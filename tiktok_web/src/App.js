@@ -30,6 +30,22 @@ const override = css`
 `;
 
 
+function ShowLang(){
+  if (localStorage.getItem("lang") == "vi"){
+    return (<h1>VI</h1>);
+  }
+  if (localStorage.getItem("lang") == "en"){
+    return (<h1>EN</h1>);
+  }
+  if (localStorage.getItem("lang") == "jp"){
+    return (<h1>JP</h1>);
+  }
+  else{
+    return (<h1>DE</h1>)
+  }
+}
+
+
 class App extends Component {
 
   constructor(){
@@ -39,6 +55,7 @@ class App extends Component {
       all_video: [],
       loading: false,
       class_load: "disable",
+      class_choose: "disable",
     };
   }
 
@@ -46,13 +63,11 @@ class App extends Component {
     i18next.changeLanguage(lang)
   }
 
-  /*
   setLang(lang) {
     window.localStorage.setItem('lang', lang);
     this.handleClick(window.localStorage.getItem('lang'));
     console.log(this.props);
   }
- */
 
   async componentDidMount(){
     const res1 = await onLoadAll();
@@ -65,6 +80,7 @@ class App extends Component {
     setTimeout(() => {
       this.setState({loading: false, class_load: "disable"});
     }, 2000);
+    this.setLang("vi");
     //console.log(this.state.all_data, this.state.all_video);
   }
 
@@ -100,14 +116,28 @@ class App extends Component {
             <Route exact path = '/upload' element = {<Upload lang = {t} />} />
           </Routes>
         </Router>
-        <select className='selectLang' onChange={(e) => this.handleClick(e.target.value)}>
-          <option value='vi'>vi</option>
-          <option value='en'>en</option>
-          <option value='jp'>jp</option>
-        </select>
+       
+        <div className='selectLang' onClick={() => this.setState({class_choose: "choose--lang"})} 
+                                    onMouseLeave={() => setTimeout(() => {this.setState({class_choose: "disable"})},2000)}>
+          <ShowLang />
+          <div className={this.state.class_choose}>
+            <button onClick={() => {this.setLang("vi"); this.setState({class_choose: "disable"})}}>Tiếng Việt - (VI)</button>
+            <button onClick={() => {this.setLang("en"); this.setState({class_choose: "disable"})}}>English - (EN)</button>
+            <button onClick={() => {this.setLang("jp"); this.setState({class_choose: "disable"})}}>日本語 - (JP)</button>
+          </div>
+        </div>
       </div>
     )
   }
 }
 
 export default withTranslation()(App);
+
+/*
+
+ <select className='selectLang' onChange={(e) => this.handleClick(e.target.value)}>
+          <option value='vi'>vi</option>
+          <option value='en'>en</option>
+          <option value='jp'>jp</option>
+        </select>
+        */

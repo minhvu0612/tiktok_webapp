@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { onUpVideo } from "../../api/loadVideoByUserId";
 import Menu from "../../components/menu/menu";
-//import VideoSnapshot from 'video-snapshot';
+import VideoSnapshot from 'video-snapshot';
 
 
 // import scss
@@ -35,6 +35,8 @@ function Upload(props){
     // set background video
     const videoTag = useRef(null);
     const [snapshots, setSnapshots] = useState([]);
+    const [BG, setBG] = useState("");
+
 
     useEffect(() => {
         //console.log(localStorage);
@@ -49,10 +51,12 @@ function Upload(props){
             "description": description,
             "user_id": localStorage.getItem("id"),
             "hashtag_name": hashtag,
+            "background_video": BG,
         }
-        //console.log(data);
+        console.log(data);
         onUpVideo(data).then(
             (res) => {
+                console.log(res);
                 if (res.data.alert === 200){
                     setSuccess('success');
                     setTimeout(() => {
@@ -84,8 +88,28 @@ function Upload(props){
         )
     }
 
-    const setSnapShot = (file, url) => {
-        
+    const uploadBackground = async (file) => {
+        const form = new FormData();
+        form.append("file", file);
+        //console.log(file);
+        form.append("upload_preset", "background");
+        axios.post("https://api.cloudinary.com/v1_1/diw0u2vl1/image/upload", form).then(
+          async (response) => {
+                console.log(response.data);
+                setBG(response.data.url);
+            }
+        )
+    }
+
+    const getSnap = async (e) => {
+        const snapshoter = new VideoSnapshot(e.target.files[0]);
+        const arr = [];
+        for (let i = 0; i < 2; i+= 0.2){
+            const previewSrc = await snapshoter.takeSnapshot(i);
+            arr.push(previewSrc);
+        }
+        setSnapshots(arr);
+        //setBG(previewSrc)
     }
 
 
@@ -130,6 +154,7 @@ function Upload(props){
                                        uploadVideo(e.target.files[0]);
                                        setChange('change--video');
                                        setUpload('video--upload');
+                                       getSnap(e);
                                        }} />
                             <button className='upload--btn--upload'>Choosen a file</button>
                             <div className={changeVideo}>
@@ -148,27 +173,27 @@ function Upload(props){
                             <label>Hashtag</label><br />
                             <input type='text' id="hashtag" required  onChange={(e) => {setHashtag(e.target.value)}} /><br />
                             <p onClick={() => onClickSetHashtag()}>#</p>
-                            <div className={all_hashtag_class}>
+                            <div className={all_hashtag_class} onMouseOut={() => setTimeout(() => setAllHashtagClass("disable"),2000)}>
                                 {
                                     all_hashtag.map((tag) => <button onClick={() => onChooseTag(tag.hashtag_name)}>{tag.hashtag_name}</button>)
                                 }
                             </div>
                             <label>Description</label><br />
                             <textarea type='text' required onChange={(e) => {setDescription(e.target.value)}} /><br />
-                            <div className="background--video">
-                            {snapshots.map((snapshot, index) => (
-                                <div className="snapshot__item">
-                                <input
-                                    className="snapshot"
-                                    type="radio"
-                                    name="snapshot"
-                                    id={index}
-                                />
-                                <label htmlFor={index}>
-                                    <img height="100%" width="100%" src={snapshot} />
-                                </label>
-                                </div>
-                            ))}
+                            <div className="background--video" ref={videoTag}>
+                                {snapshots.map((snapshot, index) => (
+                                    <div className="snapshot__item" onChange={() => {uploadBackground(snapshot)}}>
+                                        <input
+                                            className="snapshot"
+                                            type="radio"
+                                            name="snapshot"
+                                            id={index}
+                                        />
+                                        <label htmlFor={index}>
+                                            <img height="100%" width="100%" src={snapshot} />
+                                        </label>
+                                    </div>
+                                ))}
                             </div>
                             <div className='upload--submit--clear'>
                                 <button onClick={() => {setClear('clear')}}>Hủy bỏ</button>

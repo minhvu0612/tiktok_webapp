@@ -91,6 +91,7 @@ function Setting(props){
     }
 
     const uploadImg = (file) => {
+        console.log(file);
         const form = new FormData();
         form.append("file", file);
         form.append("upload_preset", "upload_image");

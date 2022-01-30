@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { onCountFollow } from "../../api/follows";
-import { getVideoLike } from "../../api/like";
+import { getAllVideoLike, getVideoLike } from "../../api/like";
 import { onGetVideoByUser } from "../../api/loadVideoByUserId";
 import Menu from "../../components/menu/menu";
 import Sidebar from "../../components/sidebar/sidebar";
@@ -12,7 +12,7 @@ function Personal(props){
 
     const [following, setFollowing] = useState(0);
     const [follower, setFollower] = useState(0);
-    const [like, setLike] = useState(12000000);
+    const [like, setLike] = useState(0);
 
 
     // set btn change
@@ -53,9 +53,15 @@ function Personal(props){
             const res = await getVideoLike(localStorage.getItem("id"));
             if (res.data.alert == 200){
                 setVideoLikes(res.data.data);
-                res.data.data.map((val, key) => console.log(val.video.id)); 
+                //res.data.data.map((val, key) => console.log(val.video.id)); 
             }
         }
+        async function fetchLikeCount(){
+            const res = await getAllVideoLike(localStorage.getItem("id"));
+            setLike(res.data.data);
+            console.log(res.data.data);
+        }
+        fetchLikeCount();
         fetchData();
         fetchMyLike();
         document.title = "Tiktok - Personal";

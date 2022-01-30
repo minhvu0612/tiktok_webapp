@@ -18,6 +18,7 @@ import { Tooltip } from '@mui/material'
 import { onLoadAll } from './../../api/loadAllUser'
 import { loadHashtag } from './../../api/hashtag'
 import { Box, padding } from '@mui/system'
+import { onFollowingUserList } from '../../api/follows'
 
 const InputWithMention = React.forwardRef(
   ({ handleChange, content, styles, suggestionsStyles }, innerref) => {
@@ -27,16 +28,19 @@ const InputWithMention = React.forwardRef(
     const debounce = useRef(null)
     useEffect(() => {
       const userApi = async () => {
-        const response = await onLoadAll();
-        console.log(response.data.data);
-        response.data.data.forEach((user) => {
-          user.display = user.username;
+        const res = await onFollowingUserList(localStorage.getItem("id"));
+        const arr = []
+        res.data.following.forEach((user) => {
+          arr.push(user.user_2);
         })
-        setUsers(response.data.data);
+        arr.forEach((x) => {
+          x.display = x.username;
+        })
+        setUsers(arr);
       }
       const hashTagsApi = async () => {
         const response = await loadHashtag();
-        console.log(response.data);
+        //console.log(response.data);
         response.data.data.forEach((hashTag) => {
           hashTag.display = hashTag.hashtag_name;
           hashTag.views = 300
@@ -50,7 +54,7 @@ const InputWithMention = React.forwardRef(
       handleChange(content.concat(emojiObject.emoji))
     }
     return (
-      <div style={styles}>
+      <div className='div--input' style={styles}>
         <MentionsInput
           ref={innerref}
           className="mentions"
@@ -180,6 +184,7 @@ const InputWithMention = React.forwardRef(
           <IconButton
             disableFocusRipple
             disableRipple
+            style={{width: 5 + "%", marginRight: 5 + "px"}}
             onClick={() => {
               setShowEmoji(!showEmoji)
             }}

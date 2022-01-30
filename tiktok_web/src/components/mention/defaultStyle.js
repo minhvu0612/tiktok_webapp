@@ -43,8 +43,11 @@ export default {
     },
     item: {
       paddingLeft: '15px',
+      transition: '0.1s',
+      backgroundColor: 'white',
       '&focused': {
-        backgroundColor: 'rgba(242, 242, 242,0.4)',
+        color: 'white',
+        backgroundColor: 'rgba(254, 44, 85, 0.5)',
       },
     },
   },

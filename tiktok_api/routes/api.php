@@ -10,6 +10,7 @@ use App\Http\Controllers\TiktokApi\FollowController;
 use App\Http\Controllers\TiktokApi\HashtagController;
 use App\Http\Controllers\TiktokApi\LikeVideoController;
 use App\Http\Controllers\TiktokApi\CommentController;
+use App\Http\Controllers\TiktokApi\ReplyController;
 use App\Http\Controllers\TiktokApi\LikeCommentController;
 
 /*
@@ -68,6 +69,7 @@ Route::post('/check_like_video', [LikeVideoController::class, 'check']);
 Route::get('/count_like/{id}', [LikeVideoController::class, 'countLike']);
 Route::get('/count_video_like/{id}', [LikeVideoController::class, 'getLikeByUserId']);
 Route::post('/dislike_video', [LikeVideoController::class, 'delete']);
+Route::get('/load_all_like_video/{id}', [LikeVideoController::class, 'getLikeCount']);
 
 
 
@@ -78,6 +80,8 @@ Route::post('/load_comments', [CommentController::class, 'load_comments']);
 
 
 //replies
+Route::post('/replies', [ReplyController::class, 'save_reply']);
+Route::post('/load_replies', [ReplyController::class, 'load_replies']);
 
 
 

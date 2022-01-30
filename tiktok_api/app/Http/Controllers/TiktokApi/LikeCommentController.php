@@ -38,8 +38,8 @@ class LikeCommentController extends Controller
     }
 
 
-    public static function check_rep(Request $request){
-        if (DB::table('like_comments')->where('user_id', $request->user_id)->where('reply_id', $request->reply_id)->exists()) {
+    public static function check_rep($user_id, $reply_id){
+        if (DB::table('like_comments')->where('user_id', $user_id)->where('reply_id', $reply_id)->exists()) {
             return 1;
         }
         else return 0;

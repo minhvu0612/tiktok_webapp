@@ -8,6 +8,7 @@ export const checkLikeVideo = (data) => axios.post("http://127.0.0.1:8000/api/ch
 export const countLikeVideo = (id) => axios.get("http://127.0.0.1:8000/api/count_like/" + id);
 export const dislikeVideo = (data) => axios.post("http://127.0.0.1:8000/api/dislike_video", data);
 export const getVideoLike = (id) => axios.get("http://127.0.0.1:8000/api/count_video_like/" + id);
+export const getAllVideoLike = (id) => axios.get("http://127.0.0.1:8000/api/load_all_like_video/" + id);
 
 
 // like cmt

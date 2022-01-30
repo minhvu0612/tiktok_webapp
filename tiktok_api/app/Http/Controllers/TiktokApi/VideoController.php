@@ -13,6 +13,7 @@ class VideoController extends Controller
     public function saveVideo(Request $request){
         $video = new Videos();
         $video->url = $request->url;
+        $video->background_video = $request->background_video;
         $video->description = $request->description;
         $video->hashtag_name = strtolower($request->hashtag_name);
         $video->time_view = 0.0;
