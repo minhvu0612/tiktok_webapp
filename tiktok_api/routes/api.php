@@ -12,6 +12,8 @@ use App\Http\Controllers\TiktokApi\LikeVideoController;
 use App\Http\Controllers\TiktokApi\CommentController;
 use App\Http\Controllers\TiktokApi\ReplyController;
 use App\Http\Controllers\TiktokApi\LikeCommentController;
+use App\Http\Controllers\TiktokApi\NortificationController;
+use App\Models\TiktokApi\Nortification;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,3 +93,5 @@ Route::post('/load_replies', [ReplyController::class, 'load_replies']);
 Route::post('/like_comment', [LikeCommentController::class, 'save_like']);
 Route::post('/delete_like_cmt', [LikeCommentController::class, 'delete_like_cmt']);
 Route::post('/delete_like_rep', [LikeCommentController::class, 'delete_like_rep']);
+Route::get('/get_nortifications/{id}',[NortificationController::class,'getNortification']);
+Route::post('/mark_read',[NortificationController::class,'markAsRead']);
