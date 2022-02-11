@@ -20,6 +20,7 @@ import Following from './pages/following/following'
 import Upload from './pages/upload/upload'
 import VideoDetail from './pages/video_detail/video'
 import { onGetAllVideo } from './api/loadVideoByUserId'
+import Search from './pages/search/search'
 
 const override = css`
   display: block;
@@ -126,6 +127,7 @@ class App extends Component {
               })}
               <Route exact path="/setting" element={<Setting lang={t} />} />
               <Route exact path="/upload" element={<Upload lang={t} />} />
+              <Route exact path="/search" element={<Search lang={t} />} />
             </Routes>
           </Router>
 

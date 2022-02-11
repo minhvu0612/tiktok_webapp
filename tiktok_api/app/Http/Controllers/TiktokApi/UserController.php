@@ -6,6 +6,7 @@ use App\Events\LoginEvent;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 // user models
 use App\Models\TiktokApi\Users;
@@ -117,6 +118,22 @@ class UserController extends Controller
         return response()->json([
             'alert' => 200,
             'data' => Users::find($request->id),
+        ]);
+    }
+
+    //search 
+    public function search(Request $request){
+        $search_all = Users::all();
+        $search_array = [];
+        $n = 0;
+        for ($x = 0; $x < count($search_all); $x++){
+            if (strpos(strtolower($search_all[$x]->username), strtolower($request->value)) !== false){
+                $search_array[$n] = $search_all[$x];
+                $n++;
+            }
+        }
+        return response()->json([
+            'data' => $search_array,
         ]);
     }
 }

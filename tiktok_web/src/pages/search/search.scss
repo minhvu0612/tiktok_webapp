@@ -1,0 +1,44 @@
+.search--page {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    .search--container {
+      position: absolute;
+      top: 0px;
+      padding-top: 60px;
+      padding-left: 15%;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      .search--main {
+        overflow-y: scroll;
+        padding-top: 30px;
+        padding-bottom: 40px;
+        width: 63%;
+
+        .search--main--btn{
+          width: 80%;
+          padding: 10px;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          button{
+            width: 30%;
+            background-color: white;
+            border: none;
+            color: rgba(0, 0, 0, 0.4);
+            font-size: 1.0em;
+            font-weight: bold;
+          }
+          .btn--color{
+            color: black;
+          }
+        }
+
+        .search--user{
+          width: 80%;
+          margin-top: 10px;
+        }
+      }
+    }
+  }

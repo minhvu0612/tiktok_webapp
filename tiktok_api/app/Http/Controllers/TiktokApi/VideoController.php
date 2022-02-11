@@ -73,4 +73,21 @@ class VideoController extends Controller
             'data'  => $video,
         ]);
     }
+
+    //search 
+    public function search(Request $request){
+        $search_all = Videos::all();
+        $search_array = [];
+        $n = 0;
+        for ($x = 0; $x < count($search_all); $x++){
+            if ((strpos(strtolower($search_all[$x]->hashtag_name), strtolower($request->value)) !== false) || 
+            (strpos(strtolower($search_all[$x]->description), strtolower($request->value)) !== false)){
+                $search_array[$n] = $search_all[$x];
+                $n++;
+            }
+        }
+        return response()->json([
+            'data' => $search_array,
+        ]);
+    }
 }

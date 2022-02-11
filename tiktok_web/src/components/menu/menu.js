@@ -319,6 +319,9 @@ function Menu(props) {
   const onSetNortiUnread = (num) => {
     setNortiUnread(num)
   }
+
+  const [search_value, setValue] = useState("");
+
   return (
     <>
       <div className="menu--components">
@@ -353,8 +356,14 @@ function Menu(props) {
           className="menu--search"
           type="search"
           placeholder={props.lang('menu.search')}
+          defaultValue={localStorage.getItem("s_value")}
+          onChange={(e) => {setValue(e.target.value); localStorage.setItem("s_value", e.target.value)}}
         />
-        <button className="menu--search--btn">
+        <button className="menu--search--btn" onClick={() => {
+            if(search_value !== "" && search_value !== null){
+              window.location.href = "/search";
+            }
+        }}>
           <SearchIcon
             style={{
               fontWeight: 'normal',

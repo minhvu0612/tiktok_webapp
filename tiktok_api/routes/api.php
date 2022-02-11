@@ -13,6 +13,7 @@ use App\Http\Controllers\TiktokApi\CommentController;
 use App\Http\Controllers\TiktokApi\ReplyController;
 use App\Http\Controllers\TiktokApi\LikeCommentController;
 use App\Http\Controllers\TiktokApi\NortificationController;
+use App\Http\Controllers\RCMDTController;
 use App\Models\TiktokApi\Nortification;
 
 /*
@@ -95,3 +96,11 @@ Route::post('/delete_like_cmt', [LikeCommentController::class, 'delete_like_cmt'
 Route::post('/delete_like_rep', [LikeCommentController::class, 'delete_like_rep']);
 Route::get('/get_nortifications/{id}',[NortificationController::class,'getNortification']);
 Route::post('/mark_read',[NortificationController::class,'markAsRead']);
+
+
+// search
+Route::post('/search_users', [UserController::class, 'search']);
+Route::post('/search_videos', [VideoController::class, 'search']);
+
+// RCMDT
+Route:: post('/rcmdt', [RCMDTController::class, 'choose_K_point']);

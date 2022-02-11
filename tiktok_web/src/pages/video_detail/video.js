@@ -186,7 +186,8 @@ function VideoDetail(props) {
         arr.push(val)
       }
     })
-    return arr.length
+    //console.log(arr);
+    return arr;
   }
 
   useEffect(async () => {
@@ -208,6 +209,7 @@ function VideoDetail(props) {
         res.data.data.forEach((val) => {
           val.content = convertComment(val.content)
           val.replies = choose(res1.data.data, val.id)
+          //console.log(val.replies)
         })
         //console.log(res.data.data);
         setComments(res.data.data)
@@ -492,6 +494,7 @@ function VideoDetail(props) {
                         Trả lời
                       </p>
                     </div>
+                    <div className='replies--list'>
                     {val.replies != 0 ? (
                       <>
                         {show_rep == '' ? (
@@ -536,6 +539,7 @@ function VideoDetail(props) {
                         </div>
                       </>
                     ) : null}
+                    </div>
                   </div>
                   <div className="like--comment">
                     {check_like_cmt[key] ? (
@@ -608,3 +612,51 @@ function VideoDetail(props) {
   )
 }
 export default VideoDetail
+
+
+/* 
+
+{val.replies != 0 ? (
+                      <>
+                        {show_rep == '' ? (
+                          <p
+                            style={{
+                              cursor: 'pointer',
+                              color: 'rgba(0,0,0,0.5)',
+                              fontSize: 0.85 + 'em',
+                              fontWeight: 'bold',
+                              marginLeft: 65 + 'px',
+                              marginTop: 0,
+                            }}
+                            onClick={() => setShowRep('disable')}
+                          >
+                            Ẩn tất cả
+                          </p>
+                        ) : (
+                          <p
+                            style={{
+                              cursor: 'pointer',
+                              color: 'rgba(0,0,0,0.5)',
+                              fontSize: 0.85 + 'em',
+                              fontWeight: 'bold',
+                              marginLeft: 65 + 'px',
+                              marginTop: 0,
+                            }}
+                            onClick={() => setShowRep('')}
+                          >
+                            Hiển thị tất cả
+                          </p>
+                        )}
+                        <div className={show_rep}>
+                          {all_rep.map((v, key) =>
+                            SetRep(
+                              v,
+                              val.id,
+                              check_like_rep[key],
+                              count_like_rep[key],
+                              user.id
+                            )
+                          )}
+                        </div>
+                      </>
+                    ) : null}*/
